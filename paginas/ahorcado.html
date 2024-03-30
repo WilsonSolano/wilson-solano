@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icono.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style-ahorcado.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <title>Ahorcado</title>
+</head>
+<body>
+    <header>
+        <div class="portada">
+            <h1>AHORCADO EXTREAM</h1>
+            <img src="/img/victimaSoldadosPortada.png" alt="" class="portada-img">
+            <p>QUE INICIE EL JUEGO</p>
+        </div>
+    </header>
+    <main>
+        <div id="palabra">
+            <h3>Elige una categoria:</h3>
+            <p class="btn animal" onclick="elegirPaAni('animal')">Animal</p>
+            <p class="btn animal" onclick="elegirPaAni('paises')">Paises</p>
+            <p class="btn animal" onclick="elegirPaAni('cosas')">Cosas</p>
+        </div>
+
+        <section class="desarrollo">
+            <h3 id="contador">Intentos restantes:</h3><h3 id="intentos">6</h3>
+            <label for="letra">Ingrese una letra:</label>
+            <input type="text" name="letra" id="letra">
+            <input type="button" value="Probar" id="btn-p" onclick="clicBTN()" class="btnA">
+            <input type="button" value="Nueva Partida" onclick="reiniciarPan()" id="btn-reini" class="btnA">
+            <div class="cuerpo">
+                <p id="espacios">--------------------------</p>
+                <img src="/img/tileSetAhorcado(1).png" alt="" id="cuerda">
+                <img src="/img/soldado.png" alt="" id="soldado">
+            </div>
+
+            <p id="letras-usadas">LETRAS USADAS:</p>
+            
+
+
+        </section>
+    </main>
+
+    <!--<p id="respuesta"></p>-->
+    <!--javascript-->
+    <script src="/js/ahorcado.js"></script>
+
+</body>
+</html>
