@@ -1,0 +1,152 @@
+*{
+    font-family:"Pixelify Sans", sans-serif;
+    color: aliceblue;
+}
+body{
+    background-color: black;
+}
+
+header{
+    background-color: #493535;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+h1{
+    text-shadow: 2px 2px 4px rgb(255, 0, 0);
+}
+.portada{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 35px;
+    text-align: center;
+}
+.portada-img{
+    width: 500px;
+}
+
+
+/*cuerpo*/
+main{
+    background-color: rgb(7, 80, 80);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 10px;
+}
+
+/*animacion*/
+@keyframes subir{
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50%{
+      opacity: 0;
+      transform: translateY(50%); /*Desplaza hacia la derecha*/
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(50%); /*Desplaza hacia la derecha*/
+    }
+}
+
+.animacionsalir{
+    animation: subir 1s linear;
+}
+
+#palabra{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    width: 80vw;
+    border: 1px solid;
+    border-radius: 10px;
+}
+h3{
+    font-size: 25px;
+    text-align: center;
+    margin: 10px 25px 10px 10px;
+}
+.btn{
+    background-color: brown;
+    padding: 15px;
+    font-size: 25px;
+    border-radius: 8px;
+    margin-left: 15px;
+    transition: all 350ms ease-in-out;
+}
+.btn:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.desarrollo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 85%;
+
+}
+
+/*vista*/
+#soldado{
+    height: 200px;
+}
+#letras-usadas{
+    width: 400px;
+    height: 300px;
+    border: 1px solid;
+    margin: 10px 10px 10px 10px;
+}
+#letra{
+    margin: 0 10px 0 10px;
+    color: black;
+    font-size: 16px;
+}
+.btnA{
+    background-color: rgb(115, 208, 177);
+    color: black;
+    transition: all 350ms ease-in-out;
+}
+
+.btnA:hover{
+    box-shadow: 0 0 15px 9px rgba(2, 247, 247, 0.426)
+}
+#espacios{
+    width: 300px;
+    font-size: 20px;
+    border: 1px solid;
+    text-align: center;
+}
+
+#cuerda{
+    width: 415px;
+}
+#btn-reini{
+    display: none;
+}
+
+@media (max-width: 768px){
+    #soldado{
+        display: none;
+    }
+    .btnA{
+        font-size: 20px;
+        margin-top: 5px;
+        padding: 5px;
+    }
+    h3{
+        width: 65vw;
+    }
+}
