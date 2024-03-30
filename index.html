@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-index.css">
+    <link rel="shortcut icon" href="img/iconoIndex.png" type="image/x-icon">
+    <title>Mi Portafolio</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navega">
+                <li class="nav-item"> <a href="#" onclick="irASeccion('Mis-Proyectos')"> Mis Proyectos</a></li>
+                <li class="nav-item"> <a href="#" onclick="irASeccion('sobre-mi')"> Sobre Mí</a></li>
+                <li class="nav-item"> <a href="#"> Contacto</a></li>
+                <li class="nav-item"> <a href="#" onclick="irASeccion('conocimientos')"> Conocimientos</a></li>
+                <li class="nav-item"> <a href="paginas/ahorcado.html">Juegos</a></li>
+            </ul>
+        </nav>
+        <div class="encabe">
+            <div class="textos">
+                <h2>Hellos, Soy Wilson <br> Desarrollador <span class="typed"></span></h2>
+            </div>
+            <img src="img/personaje.webp" alt="" class="perso">
+        </div>  
+    </header>
+    <hr>
+    <main>
+        <section class="intro" id="sobre-mi">
+            <img src="img/foto-perfil.webp" alt="" class="yo">
+            <div class="texto">
+                <h1>Desarrollador <br>De Software</h1>
+                <p class="t-intro">Me apasiona la creacion de soluciones tecnologicas actualizadas y escalables.</p>
+            </div>
+        </section>
+
+        <section class="proyecto" id="Mis-Proyectos">
+            <h2 class="h2-pro">Proyectos</h2>
+            <div class="pro-1">
+                <img src="img/atras.png" alt="" class="btn-carr c1 atras" onclick="atras()">
+                <div id="img-1">
+                    <img src="img/proyecto-1-1.jpg" alt="" id="imagen-1" class="ajuste-img">
+                    <img src="img/proyecto-1-2.jpg" alt="" id="imagen-2" class="ajuste-img">
+                </div>
+                <img src="img/adelante.png" alt="" class="btn-carr c2 adelante" onclick="adelante()"> 
+                <div class="texto-pro1">
+                    <h3>Sistema de CRUD en base de datos con C# y SqlServer</h3>
+                    <p>Este proyecto consiste en las operaciones basicas sobre una base de datos CRUD(Crea, Leer, Actualizar y Eliminar) sobre las tablas facturas y clientes</p>
+                    <p><b>Tecnologías utilizadas:</b></p>
+                    <ul>
+                        <li>Lenguaje de programación: <b>C#</b></li>
+                        <li>Framework: <b>Windows Forms</b></li>
+                        <li>Base de datos: <b>SQL Server</b></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="conocimientos" id="conocimientos">
+            <h2  class="h2-cono">Conocimientos</h2>
+            <div class="lengua">
+                <div class="cshar cart">
+                    <img src="img/c-sharp.png" alt="" class="img-car">
+                    <p class="p-car">C#</p>
+                </div>
+                <div class="javaS cart">
+                    <img src="img/javascript.png" alt="" class="img-car">
+                    <p class="p-car">JavaScript</p>
+                </div>
+                <div class="htl cart">
+                    <img src="img/HTML5.png" alt="" class="img-car">
+                    <p class="p-car">HTML</p>
+                </div>
+                <div class="css cart">
+                    <img src="img/CSS.png" alt="" class="img-car">
+                    <p class="p-car">CSS</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="juego">
+            <div id="">
+                <a href="paginas/ahorcado.html"><img src="img/victimaSoldadosPortada.png" alt="" class="img-juego"></a>
+            </div>
+            <a href="paginas/ahorcado.html"><p class="parra-jue">¡¡JUEGA YA!!</p></a>
+        </section>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="js/maquina.js"></script>
+</body>
+</html>
