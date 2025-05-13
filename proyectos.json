@@ -1,0 +1,93 @@
+
+{
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Sistema de Gestión Empresarial",
+        "descripcion": "Aplicación web para gestión de inventario, clientes y facturación con reportes en tiempo real.",
+        "imagen": "img/proyectos/gestion.jpg",
+        "tecnologias": ["C#", "ASP.NET", "SQL Server", "Bootstrap"],
+        "categoria": "Web",
+        "enlace": "https://github.com/usuario/gestion-app",
+        "destacado": true,
+        "fechaFinalizacion": "2024-03"
+      },
+      {
+        "id": 2,
+        "nombre": "E-commerce Marketplace",
+        "descripcion": "Plataforma de ventas online con catálogo de productos, sistema de pagos y área de vendedores.",
+        "imagen": "img/proyectos/ecommerce.jpg",
+        "tecnologias": ["PHP", "Laravel", "MySQL", "JavaScript"],
+        "categoria": "Web",
+        "enlace": "https://github.com/usuario/ecommerce",
+        "destacado": false,
+        "fechaFinalizacion": "2023-11"
+      },
+      {
+        "id": 3,
+        "nombre": "App de Fitness",
+        "descripcion": "Aplicación móvil para seguimiento de rutinas de ejercicio, nutrición y progreso personal.",
+        "imagen": "img/proyectos/fitness.jpg",
+        "tecnologias": ["Kotlin", "Jetpack Compose", "Firebase"],
+        "categoria": "Móvil",
+        "enlace": null,
+        "destacado": true,
+        "fechaFinalizacion": "2024-01"
+      },
+      {
+        "id": 4,
+        "nombre": "Dashboard Analítico",
+        "descripcion": "Panel de control interactivo con visualización de datos, gráficos y reportes personalizables.",
+        "imagen": "img/proyectos/dashboard.jpg",
+        "tecnologias": ["JavaScript", "Vue.js", "Tailwind CSS", "Chart.js"],
+        "categoria": "Web",
+        "enlace": "https://github.com/usuario/analytics-dashboard",
+        "destacado": false,
+        "fechaFinalizacion": "2023-09"
+      },
+      {
+        "id": 5,
+        "nombre": "CRM para Consultorías",
+        "descripcion": "Sistema para gestión de clientes, proyectos y seguimiento de oportunidades de negocio.",
+        "imagen": "img/proyectos/crm.jpg",
+        "tecnologias": ["C#", "Blazor", "SQL Server", "Identity"],
+        "categoria": "Web",
+        "enlace": null,
+        "destacado": false,
+        "fechaFinalizacion": "2024-02"
+      },
+      {
+        "id": 6,
+        "nombre": "Aplicación de Presupuestos",
+        "descripcion": "Herramienta para gestión financiera personal con seguimiento de gastos y planificación de ahorro.",
+        "imagen": "img/proyectos/presupuesto.jpg",
+        "tecnologias": ["JavaScript", "Vue.js", "Firebase"],
+        "categoria": "Web",
+        "enlace": "https://github.com/usuario/budget-app",
+        "destacado": false,
+        "fechaFinalizacion": "2023-07"
+      },
+      {
+        "id": 7,
+        "nombre": "Sistema de Reservas",
+        "descripcion": "Plataforma para gestión de citas y reservas para negocios con múltiples servicios y horarios.",
+        "imagen": "img/proyectos/reservas.jpg",
+        "tecnologias": ["PHP", "Laravel", "MySQL", "Bootstrap"],
+        "categoria": "Web",
+        "enlace": null,
+        "destacado": false,
+        "fechaFinalizacion": "2023-10"
+      },
+      {
+        "id": 8,
+        "nombre": "App de Seguimiento de Tareas",
+        "descripcion": "Aplicación móvil para gestión personal de proyectos, tareas y colaboración en equipo.",
+        "imagen": "img/proyectos/tareas.jpg",
+        "tecnologias": ["Kotlin", "Jetpack Compose", "Room Database"],
+        "categoria": "Móvil",
+        "enlace": "https://github.com/usuario/task-tracker",
+        "destacado": false,
+        "fechaFinalizacion": "2023-12"
+      }
+    ]
+  }

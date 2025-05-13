@@ -34,8 +34,8 @@
                 <p class="t-intro">Me apasiona la creacion de soluciones tecnologicas actualizadas y escalables.</p>
             </div>
         </section>
-
-        <section class="proyecto" id="Mis-Proyectos">
+        
+        <!--<section class="proyecto" id="Mis-Proyectos">
             <h2 class="h2-pro">Proyectos</h2>
             <div class="pro-1">
                 <img src="img/atras.png" alt="" class="btn-carr c1 atras" onclick="atras()">
@@ -55,26 +55,212 @@
                     </ul>
                 </div>
             </div>
+        </section>-->
+        <section class="proyectos" id="proyectos">
+            <h2 class="titulo-seccion">Mis Proyectos</h2>
+            
+            <div class="filtros-container">
+                <div class="filtro-label">Filtrar por tecnología:</div>
+                <div class="filtros">
+                    <label class="filtro-opcion">
+                        <input type="radio" name="filtro" value="todos" checked>
+                        <span class="filtro-texto">Todos</span>
+                    </label>
+                    <label class="filtro-opcion">
+                        <input type="radio" name="filtro" value="C#">
+                        <span class="filtro-texto">C#</span>
+                    </label>
+                    <label class="filtro-opcion">
+                        <input type="radio" name="filtro" value="PHP">
+                        <span class="filtro-texto">PHP</span>
+                    </label>
+                    <label class="filtro-opcion">
+                        <input type="radio" name="filtro" value="JavaScript">
+                        <span class="filtro-texto">JavaScript</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="proyectos-grid" id="proyectos-container">
+                <!-- los proyectos se cargaran dinamicamente desde JS -->
+            </div>
         </section>
-
         <section class="conocimientos" id="conocimientos">
-            <h2  class="h2-cono">Conocimientos</h2>
-            <div class="lengua">
-                <div class="cshar cart">
-                    <img src="img/c-sharp.png" alt="" class="img-car">
-                    <p class="p-car">C#</p>
+            <h2 class="titulo-seccion">Mis Conocimientos</h2>
+            
+            <div class="categorias">
+                <!-- Lenguajes de Programación -->
+                <div class="categoria">
+                    <h3 class="categoria-titulo">Lenguajes de Programación</h3>
+                    <div class="skills">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/c-sharp.png" alt="C#">
+                            </div>
+                            <div class="skill-info">
+                                <h4>C#</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/javascript.png" alt="JavaScript">
+                            </div>
+                            <div class="skill-info">
+                                <h4>JavaScript</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/php.webp" alt="PHP">
+                            </div>
+                            <div class="skill-info">
+                                <h4>PHP</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/kotlin.webp" alt="Kotlin">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Kotlin</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="javaS cart">
-                    <img src="img/javascript.png" alt="" class="img-car">
-                    <p class="p-car">JavaScript</p>
+        
+                <!-- Frameworks -->
+                <div class="categoria">
+                    <h3 class="categoria-titulo">Frameworks</h3>
+                    <div class="skills">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/asp.png" alt="ASP.NET">
+                            </div>
+                            <div class="skill-info">
+                                <h4>ASP.NET</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/blazor.png" alt="Blazor">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Blazor</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/laravel.png" alt="Laravel">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Laravel</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/vue.png" alt="Vue.js">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Vue.js</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/jetpack_compose.png" alt="Jetpack Compose">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Jetpack Compose</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="htl cart">
-                    <img src="img/HTML5.png" alt="" class="img-car">
-                    <p class="p-car">HTML</p>
-                </div>
-                <div class="css cart">
-                    <img src="img/CSS.png" alt="" class="img-car">
-                    <p class="p-car">CSS</p>
+        
+                <!-- Tecnologías Frontend -->
+                <div class="categoria">
+                    <h3 class="categoria-titulo">Tecnologías Frontend</h3>
+                    <div class="skills">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/HTML5.png" alt="HTML5">
+                            </div>
+                            <div class="skill-info">
+                                <h4>HTML5</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/CSS.png" alt="CSS">
+                            </div>
+                            <div class="skill-info">
+                                <h4>CSS</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/bootstrap.png" alt="Bootstrap">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Bootstrap</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <img src="img/tailwind.png" alt="Tailwind CSS">
+                            </div>
+                            <div class="skill-info">
+                                <h4>Tailwind CSS</h4>
+                                <div class="nivel-container">
+                                    <div class="nivel-barra" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
