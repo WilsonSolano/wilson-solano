@@ -104,38 +104,34 @@ function setupFiltros() {
 
 // proyectos por tecnología
 function filtrarProyectos(filtro) {
+    const contenedor = document.getElementById('proyectos-container');
     const proyectoCards = document.querySelectorAll('.proyecto-card');
+    const animationDuration = 700; // 0.7s para la animación de giro
+
+    // 1. Aplicar animación de salida al contenedor completo
+    contenedor.classList.add('filtering-out');
     
-    // Primero aplicamos animación de salida a todas las tarjetas
-    proyectoCards.forEach(card => {
-        // Eliminamos cualquier clase de animación previa
-        card.classList.remove('filtered-in');
-        // Aplicamos la animación de salida
-        card.classList.add('filtered-out');
-    });
-    
-    // Esperamos a que termine la animación de salida antes de mostrar las nuevas
+    // 2. Después de la animación, procesar el filtrado
     setTimeout(() => {
+        // Remover animación de salida
+        contenedor.classList.remove('filtering-out');
+        
+        // Ocultar todas las cards primero
+        proyectoCards.forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Mostrar solo las que coinciden con el filtro
         proyectoCards.forEach(card => {
             const tecnologias = JSON.parse(card.dataset.tecnologias);
-            
-            // Ocultamos todas las tarjetas primero
-            card.style.display = 'none';
-            // Quitamos todas las clases de animación
-            card.classList.remove('filtered-out', 'filtered-in');
-            
             if (filtro === 'todos' || tecnologias.includes(filtro)) {
-                // Preparamos para mostrar el proyecto con animación
-                card.style.display = ''; // Mostramos la tarjeta nuevamente
-                
-                // Aplicamos un pequeño retraso antes de añadir la clase de animación
-                // para asegurar que el navegador procese el cambio de display
-                setTimeout(() => {
-                    card.classList.add('filtered-in');
-                }, 10);
+                card.style.display = '';
+                card.style.opacity = '0'; // Preparar para animación de entrada
+                void card.offsetWidth; // Forzar reflow
+                card.style.animation = 'fadeInUp 0.5s ease-out forwards';
             }
         });
-    }, 500); // Este tiempo debe coincidir con la duración de tu animación CSS
+    }, animationDuration);
 }
 
 // para cargar datos desde un archivo JSON externo (opcional)
