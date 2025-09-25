@@ -11,19 +11,27 @@
     <header>
         <nav>
             <ul class="navega">
-                <li class="nav-item"> <a href="#" onclick="irASeccion('Mis-Proyectos')"> Mis Proyectos</a></li>
-                <li class="nav-item"> <a href="#" onclick="irASeccion('sobre-mi')"> Sobre Mí</a></li>
-                <li class="nav-item"> <a href="#"> Contacto</a></li>
-                <li class="nav-item"> <a href="#" onclick="irASeccion('conocimientos')"> Conocimientos</a></li>
-                <li class="nav-item"> <a href="paginas/ahorcado.html">Juegos</a></li>
+                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('Mis-Proyectos')"> Mis Proyectos</a></li>
+                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('sobre-mi')"> Sobre Mí</a></li>
+                <li class="nav-item a-item"> <a href="#"> Contacto</a></li>
+                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('conocimientos')"> Conocimientos</a></li>
+                <li class="nav-item a-item"> <a href="paginas/ahorcado.html">Juegos</a></li>
             </ul>
         </nav>
         <div class="encabe">
             <div class="textos">
-                <h2>Hellos, Soy Josué <br> Desarrollador <span class="typed"></span></h2>
+                <h2>Hellos, Soy Josué <br> Desarrollador <span class="typed">Web</span></h2>
+                <img src="img/personaje.webp" alt="Josué - Desarrollador" class="perso">
+                <div class="cv-container">
+                    <button onclick="descargarCV()" class="btn-cv">
+                        <svg class="download-icon" viewBox="0 0 24 24">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        Descargar CV
+                    </button>
+                </div>
             </div>
-            <img src="img/personaje.webp" alt="" class="perso">
-        </div>  
+        </div>
     </header>
     <hr>
     <main>
@@ -31,7 +39,7 @@
             <img src="img/foto-perfil.webp" alt="" class="yo">
             <div class="texto">
                 <h1>Desarrollador <br>De Software</h1>
-                <p class="t-intro">Me apasiona la creacion de soluciones tecnologicas actualizadas y escalables.</p>
+                <p class="t-intro">Especializado en crear aplicaciones web modernas con tecnologías de vanguardia y arquitecturas escalables.</p>
             </div>
         </section>
         
@@ -56,30 +64,31 @@
                 </div>
             </div>
         </section>-->
-        <section class="proyectos" id="proyectos">
+        <section class="proyectos" id="Mis-Proyectos">
             <h2 class="titulo-seccion">Mis Proyectos</h2>
             
             <div class="filtros-container">
                 <div class="filtro-label">Filtrar por tecnología:</div>
                 <div class="filtros">
-                    <label class="filtro-opcion">
+                    <label class="filtro-opcion filtro-todos">
                         <input type="radio" name="filtro" value="todos" checked>
                         <span class="filtro-texto">Todos</span>
                     </label>
-                    <label class="filtro-opcion">
+                    <label class="filtro-opcion filtro-csharp">
                         <input type="radio" name="filtro" value="C#">
                         <span class="filtro-texto">C#</span>
                     </label>
-                    <label class="filtro-opcion">
+                    <label class="filtro-opcion filtro-php">
                         <input type="radio" name="filtro" value="PHP">
                         <span class="filtro-texto">PHP</span>
                     </label>
-                    <label class="filtro-opcion">
+                    <label class="filtro-opcion filtro-js">
                         <input type="radio" name="filtro" value="JavaScript">
                         <span class="filtro-texto">JavaScript</span>
                     </label>
                 </div>
             </div>
+
             
             <div class="proyectos-grid" id="proyectos-container">
                 <!-- los proyectos se cargaran dinamicamente desde JS -->

@@ -175,3 +175,12 @@ function cargarDatosDesdeArchivo() {
             `;
         });
 }
+
+function descargarCV() {
+    const link = document.createElement('a');
+    link.href = 'docs/CV-Josue.pdf';
+    link.download = 'CV-Josue-Desarrollador.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
