@@ -3,69 +3,980 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style-index.css">
     <link rel="icon" href="img/iconoIndex.png" type="image/x-icon">
-    <title>Mi Portafolio</title>
+    <title>Josué Durán | Desarrollador Full Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-primary: #00cece;
+    --accent-secondary: #06948d;
+    --accent-glow: rgba(0, 206, 206, 0.3);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-glow: 0 0 30px var(--accent-glow);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e8e8e8;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --accent-primary: #0099cc;
+    --accent-secondary: #007399;
+    --accent-glow: rgba(0, 153, 204, 0.2);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px var(--accent-glow);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: var(--transition);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-glow);
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    top: 10%;
+    right: 10%;
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 206, 206, 0.15) 0%, transparent 70%);
+    bottom: 10%;
+    left: 5%;
+    animation: pulse 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-text .subtitle {
+    font-size: 2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-text .highlight {
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--accent-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-avatar {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px var(--accent-glow));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.about {
+    padding: 6rem 2rem;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    top: -50px;
+    right: -50px;
+    animation: pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-image-container {
+    position: relative;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--accent-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.about-image-bg {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 20px;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.skills {
+    padding: 6rem 2rem;
+    background: var(--bg-primary);
+}
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 2px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.skill-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--accent-primary);
+}
+
+.skill-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+    padding: 1rem;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.skill-card:hover .skill-icon {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: scale(1.1);
+}
+
+.skill-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-level {
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.level-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.projects {
+    padding: 6rem 2rem;
+    background: var(--bg-secondary);
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filtros-container {
+    margin: 0 auto 40px;
+    padding: 15px 20px;
+    background-color: var(--bg-tertiary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.filtro-label {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filtro-opcion {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtro-opcion input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.filtro-texto {
+    padding: 8px 16px;
+    border-radius: 25px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.filtro-opcion:hover .filtro-texto {
+    border-color: var(--accent-primary);
+}
+
+.filtro-opcion input[type="radio"]:checked + .filtro-texto {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.proyecto-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.proyecto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-primary);
+}
+
+.proyecto-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.proyecto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.proyecto-card:hover .proyecto-img {
+    transform: scale(1.1);
+}
+
+.proyecto-info {
+    padding: 1.5rem;
+}
+
+.proyecto-titulo {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.proyecto-descripcion {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.proyecto-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    padding: 0.3rem 0.8rem;
+    background: var(--bg-tertiary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    border: 1px solid var(--border-color);
+}
+
+footer {
+    background: var(--bg-primary);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    color: var(--text-primary);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.social-link:hover {
+    background: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-avatar {
+        max-width: 250px;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: 0 auto;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .skill-name {
+        font-size: 1.1rem;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="navega">
-                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('Mis-Proyectos')"> Mis Proyectos</a></li>
-                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('sobre-mi')"> Sobre Mí</a></li>
-                <li class="nav-item a-item"> <a href="#"> Contacto</a></li>
-                <li class="nav-item a-item"> <a href="#" onclick="irASeccion('conocimientos')"> Conocimientos</a></li>
-                <li class="nav-item a-item"> <a href="paginas/ahorcado.html">Juegos</a></li>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">JD</div>
+            <ul class="nav-links">
+                <li><a onclick="irASeccion('inicio')">Inicio</a></li>
+                <li><a onclick="irASeccion('sobre-mi')">Sobre Mí</a></li>
+                <li><a onclick="irASeccion('conocimientos')">Habilidades</a></li>
+                <li><a onclick="irASeccion('Mis-Proyectos')">Proyectos</a></li>
+                <li><a href="paginas/ahorcado.html">Juegos</a></li>
             </ul>
-        </nav>
-        <div class="encabe">
-            <div class="textos">
-                <h2>Hellos, Soy Josué <br> Desarrollador <span class="typed">Web</span></h2>
-                <img src="img/personaje.webp" alt="Josué - Desarrollador" class="perso">
-                <div class="cv-container">
-                    <button onclick="descargarCV()" class="btn-cv">
-                        <svg class="download-icon" viewBox="0 0 24 24">
-                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hola, Soy <br>Josué Durán</h1>
+                <p class="subtitle">Desarrollador <span class="highlight typed"></span></p>
+                <p>Especializado en crear aplicaciones web modernas y escalables utilizando tecnologías de vanguardia. Transformo ideas en soluciones digitales funcionales y elegantes.</p>
+                <div class="hero-buttons">
+                    <a href="#Mis-Proyectos" class="btn btn-primary" onclick="event.preventDefault(); irASeccion('Mis-Proyectos')">
+                        Ver Proyectos
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                            <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                        </svg>
+                    </a>
+                    <button onclick="descargarCV()" class="btn btn-secondary">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                         </svg>
                         Descargar CV
                     </button>
                 </div>
             </div>
+            <div class="hero-image">
+                <img src="img/personaje.webp" alt="Josué Durán - Desarrollador" class="hero-avatar">
+            </div>
         </div>
-    </header>
-    <hr>
-    <main>
-        <section class="intro" id="sobre-mi">
-            <img src="img/foto-perfil.webp" alt="" class="yo">
-            <div class="texto">
-                <h1>Desarrollador <br>De Software</h1>
-                <p class="t-intro">Especializado en crear aplicaciones web modernas con tecnologías de vanguardia y arquitecturas escalables.</p>
+    </section>
+
+    <section class="about" id="sobre-mi">
+        <div class="about-container">
+            <div class="about-image-container">
+                <div class="about-image-bg"></div>
+                <img src="img/foto-perfil.webp" alt="Josué Durán" class="about-image">
             </div>
-        </section>
-        
-        <!--<section class="proyecto" id="Mis-Proyectos">
-            <h2 class="h2-pro">Proyectos</h2>
-            <div class="pro-1">
-                <img src="img/atras.png" alt="" class="btn-carr c1 atras" onclick="atras()">
-                <div id="img-1">
-                    <img src="img/proyecto-1-1.jpg" alt="" id="imagen-1" class="ajuste-img">
-                    <img src="img/proyecto-1-2.jpg" alt="" id="imagen-2" class="ajuste-img">
-                </div>
-                <img src="img/adelante.png" alt="" class="btn-carr c2 adelante" onclick="adelante()"> 
-                <div class="texto-pro1">
-                    <h3>Sistema de CRUD en base de datos con C# y SqlServer</h3>
-                    <p>Este proyecto consiste en las operaciones basicas sobre una base de datos CRUD(Crea, Leer, Actualizar y Eliminar) sobre las tablas facturas y clientes</p>
-                    <p><b>Tecnologías utilizadas:</b></p>
-                    <ul>
-                        <li>Lenguaje de programación: <b>C#</b></li>
-                        <li>Framework: <b>Windows Forms</b></li>
-                        <li>Base de datos: <b>SQL Server</b></li>
-                    </ul>
+            <div class="about-content">
+                <h2>Desarrollador De Software</h2>
+                <p>Con más de 3 años de experiencia en el desarrollo de aplicaciones web y móviles, me especializo en crear soluciones tecnológicas innovadoras que resuelven problemas reales del mundo digital.</p>
+                <p>Mi enfoque está en escribir código limpio, mantenible y escalable, siempre siguiendo las mejores prácticas de la industria. Me apasiona aprender nuevas tecnologías y mantenerme actualizado con las últimas tendencias del desarrollo de software.</p>
+                <p>He trabajado en diversos proyectos, desde sistemas empresariales complejos hasta aplicaciones móviles intuitivas, siempre con el objetivo de crear experiencias de usuario excepcionales que marquen la diferencia.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Proyectos Completados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1+</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Tecnologías Dominadas</span>
+                    </div>
                 </div>
             </div>
-        </section>-->
-        <section class="proyectos" id="Mis-Proyectos">
-            <h2 class="titulo-seccion">Mis Proyectos</h2>
+        </div>
+    </section>
+
+<section class="skills" id="conocimientos">
+    <div class="skills-container">
+        <h2 class="section-title">Mis Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-card fade-in" style="animation-delay: 0.1s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/c-sharp.png" alt="C#">
+                    </div>
+                    <div class="skill-name">C#</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Avanzado</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.2s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/javascript.png" alt="JavaScript">
+                    </div>
+                    <div class="skill-name">JavaScript</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Avanzado</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.3s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/php.webp" alt="PHP">
+                    </div>
+                    <div class="skill-name">PHP</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Avanzado</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="82"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.4s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/asp.png" alt="ASP.NET">
+                    </div>
+                    <div class="skill-name">ASP.NET</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Avanzado</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.5s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/laravel.png" alt="Laravel">
+                    </div>
+                    <div class="skill-name">Laravel</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Intermedio</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.6s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/kotlin.webp" alt="Kotlin">
+                    </div>
+                    <div class="skill-name">Kotlin</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Intermedio</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.7s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/vue.png" alt="Vue.js">
+                    </div>
+                    <div class="skill-name">Vue.js</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Intermedio</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in" style="animation-delay: 0.8s">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <img src="img/blazor.png" alt="Blazor">
+                    </div>
+                    <div class="skill-name">Blazor</div>
+                </div>
+                <div class="skill-level">
+                    <div class="level-label">
+                        <span>Intermedio</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="projects" id="Mis-Proyectos">
+        <div class="projects-container">
+            <h2 class="section-title">Mis Proyectos</h2>
             
             <div class="filtros-container">
                 <div class="filtro-label">Filtrar por tecnología:</div>
@@ -89,201 +1000,225 @@
                 </div>
             </div>
 
-            
             <div class="proyectos-grid" id="proyectos-container">
-                <!-- los proyectos se cargaran dinamicamente desde JS -->
             </div>
-        </section>
-        <section class="conocimientos" id="conocimientos">
-            <h2 class="titulo-seccion">Mis Conocimientos</h2>
-            
-            <div class="categorias">
-                <!-- Lenguajes de Programación -->
-                <div class="categoria">
-                    <h3 class="categoria-titulo">Lenguajes de Programación</h3>
-                    <div class="skills">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/c-sharp.png" alt="C#">
-                            </div>
-                            <div class="skill-info">
-                                <h4>C#</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/javascript.png" alt="JavaScript">
-                            </div>
-                            <div class="skill-info">
-                                <h4>JavaScript</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/php.webp" alt="PHP">
-                            </div>
-                            <div class="skill-info">
-                                <h4>PHP</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/kotlin.webp" alt="Kotlin">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Kotlin</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Frameworks -->
-                <div class="categoria">
-                    <h3 class="categoria-titulo">Frameworks</h3>
-                    <div class="skills">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/asp.png" alt="ASP.NET">
-                            </div>
-                            <div class="skill-info">
-                                <h4>ASP.NET</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/blazor.png" alt="Blazor">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Blazor</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/laravel.png" alt="Laravel">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Laravel</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/vue.png" alt="Vue.js">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Vue.js</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/jetpack_compose.png" alt="Jetpack Compose">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Jetpack Compose</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 70%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Tecnologías Frontend -->
-                <div class="categoria">
-                    <h3 class="categoria-titulo">Tecnologías Frontend</h3>
-                    <div class="skills">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/HTML5.png" alt="HTML5">
-                            </div>
-                            <div class="skill-info">
-                                <h4>HTML5</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 95%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/CSS.png" alt="CSS">
-                            </div>
-                            <div class="skill-info">
-                                <h4>CSS</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 90%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/bootstrap.png" alt="Bootstrap">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Bootstrap</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <img src="img/tailwind.png" alt="Tailwind CSS">
-                            </div>
-                            <div class="skill-info">
-                                <h4>Tailwind CSS</h4>
-                                <div class="nivel-container">
-                                    <div class="nivel-barra" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!--<footer>
-        <section class="juego">
-            <div id="">
-                <a href="paginas/ahorcado.html"><img src="img/victimaSoldadosPortada.png" alt="" class="img-juego"></a>
-            </div>
-            <a href="paginas/ahorcado.html"><p class="parra-jue">¡¡JUEGA YA!!</p></a>
-        </section>
-    </footer>-->
+    <footer id="contacto">
+        <div class="social-links">
+            <a href="#" class="social-link" title="GitHub">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-link" title="LinkedIn">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-link" title="Email">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+            </a>
+        </div>
+        <p style="color: var(--text-secondary)">© 2024 Josué Durán. Desarrollador Full Stack.</p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Creando soluciones digitales con pasión y dedicación.</p>
+    </footer>
+
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="js/maquina.js"></script>
+    <script>
+        const typed = new Typed('.typed', {
+            strings: ['Full Stack', '.NET', 'Web', 'de Software'],
+            typeSpeed: 75,
+            backSpeed: 60,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|'
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+            }
+
+            animateProgressBars();
+            cargarDatosDesdeArchivo();
+            setupFiltros();
+        });
+
+        function irASeccion(nombreSeccion) {
+            let elementoDestino = document.getElementById(nombreSeccion);
+            elementoDestino.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function animateProgressBars() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBars = entry.target.querySelectorAll('.progress-fill');
+                        progressBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                            }, 100);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const skillsSection = document.querySelector('.skills');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        }
+
+        function cargarDatosDesdeArchivo() {
+            fetch('proyectos.json')
+                .then(response => response.json())
+                .then(data => {
+                    cargarProyectos(data.proyectos);
+                })
+                .catch(error => {
+                    console.error('Error cargando proyectos:', error);
+                    const contenedor = document.getElementById('proyectos-container');
+                    contenedor.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-secondary);">
+                            <p>No se pudieron cargar los proyectos. Verifica que el archivo proyectos.json existe.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        function cargarProyectos(proyectos) {
+            const contenedor = document.getElementById('proyectos-container');
+            contenedor.innerHTML = '';
+            
+            proyectos.forEach((proyecto, index) => {
+                const card = crearProyectoCard(proyecto, index);
+                contenedor.appendChild(card);
+            });
+        }
+
+        function crearProyectoCard(proyecto, index) {
+            const card = document.createElement('div');
+            card.className = 'proyecto-card fade-in';
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.dataset.tecnologias = JSON.stringify(proyecto.tecnologias);
+            
+            const fecha = new Date(proyecto.fechaFinalizacion);
+            const fechaFormateada = fecha.toLocaleDateString('es-ES', { 
+                year: 'numeric', 
+                month: 'long' 
+            });
+            
+            card.innerHTML = `
+                <div class="proyecto-img-container">
+                    <img src="${proyecto.imagen}" alt="${proyecto.nombre}" class="proyecto-img">
+                </div>
+                <div class="proyecto-info">
+                    <h3 class="proyecto-titulo">${proyecto.nombre}</h3>
+                    <p class="proyecto-descripcion">${proyecto.descripcion}</p>
+                    <div class="proyecto-tech">
+                        ${proyecto.tecnologias.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function setupFiltros() {
+            const radioButtons = document.querySelectorAll('input[name="filtro"]');
+            
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const filtroSeleccionado = this.value;
+                    filtrarProyectos(filtroSeleccionado);
+                });
+            });
+        }
+
+        function filtrarProyectos(filtro) {
+            const proyectoCards = document.querySelectorAll('.proyecto-card');
+            
+            proyectoCards.forEach(card => {
+                const tecnologias = JSON.parse(card.dataset.tecnologias);
+                
+                if (filtro === 'todos' || tecnologias.includes(filtro)) {
+                    card.style.display = '';
+                    card.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function descargarCV() {
+            const link = document.createElement('a');
+            link.href = 'docs/CV-Josue.pdf';
+            link.download = 'CV-Josue-Duran-Desarrollador.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
